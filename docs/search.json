@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "myBlog",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 20, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Ansocombe examples\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nSeason Colors\n\n\n\n\n\n\n\nart\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nGenerative art\n\n\n\n\n\n\n\nanalysis\n\n\nart\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -26,5 +26,26 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/Anscombe examples/index.html",
+    "href": "posts/Anscombe examples/index.html",
+    "title": "Ansocombe examples",
+    "section": "",
+    "text": "These are all Anscombe examples, with pre-loaded dataset and code as provided.\n\n## Fancy version (per help file)\n\nff &lt;- y ~ x\nmods &lt;- setNames(as.list(1:4), paste0(\"lm\", 1:4))\n\n# Plot using for loop\nfor(i in 1:4) {\n  ff[2:3] &lt;- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  ## or   ff[[2]] &lt;- as.name(paste0(\"y\", i))\n  ##      ff[[3]] &lt;- as.name(paste0(\"x\", i))\n  mods[[i]] &lt;- lmi &lt;- lm(ff, data = anscombe)\n  print(anova(lmi))\n}\n\nAnalysis of Variance Table\n\nResponse: y1\n          Df Sum Sq Mean Sq F value  Pr(&gt;F)   \nx1         1 27.510 27.5100   17.99 0.00217 **\nResiduals  9 13.763  1.5292                   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nAnalysis of Variance Table\n\nResponse: y2\n          Df Sum Sq Mean Sq F value   Pr(&gt;F)   \nx2         1 27.500 27.5000  17.966 0.002179 **\nResiduals  9 13.776  1.5307                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nAnalysis of Variance Table\n\nResponse: y3\n          Df Sum Sq Mean Sq F value   Pr(&gt;F)   \nx3         1 27.470 27.4700  17.972 0.002176 **\nResiduals  9 13.756  1.5285                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\nAnalysis of Variance Table\n\nResponse: y4\n          Df Sum Sq Mean Sq F value   Pr(&gt;F)   \nx4         1 27.490 27.4900  18.003 0.002165 **\nResiduals  9 13.742  1.5269                    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nsapply(mods, coef)  # Note the use of this function\n\n                  lm1      lm2       lm3       lm4\n(Intercept) 3.0000909 3.000909 3.0024545 3.0017273\nx1          0.5000909 0.500000 0.4997273 0.4999091\n\nlapply(mods, function(fm) coef(summary(fm)))\n\n$lm1\n             Estimate Std. Error  t value    Pr(&gt;|t|)\n(Intercept) 3.0000909  1.1247468 2.667348 0.025734051\nx1          0.5000909  0.1179055 4.241455 0.002169629\n\n$lm2\n            Estimate Std. Error  t value    Pr(&gt;|t|)\n(Intercept) 3.000909  1.1253024 2.666758 0.025758941\nx2          0.500000  0.1179637 4.238590 0.002178816\n\n$lm3\n             Estimate Std. Error  t value    Pr(&gt;|t|)\n(Intercept) 3.0024545  1.1244812 2.670080 0.025619109\nx3          0.4997273  0.1178777 4.239372 0.002176305\n\n$lm4\n             Estimate Std. Error  t value    Pr(&gt;|t|)\n(Intercept) 3.0017273  1.1239211 2.670763 0.025590425\nx4          0.4999091  0.1178189 4.243028 0.002164602\n\n# Preparing for the plots\nop &lt;- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma =  c(0, 0, 2, 0))\n\n# Plot charts using for loop\nfor(i in 1:4) {\n  ff[2:3] &lt;- lapply(paste0(c(\"y\",\"x\"), i), as.name)\n  plot(ff, data = anscombe, col = \"red\", pch = 21, bg = \"orange\", cex = 1.2,\n       xlim = c(3, 19), ylim = c(3, 13))\n  abline(mods[[i]], col = \"blue\")\n}\nmtext(\"Anscombe's 4 Regression data sets\", outer = TRUE, cex = 1.5)\n\n\n\npar(op)"
+  },
+  {
+    "objectID": "posts/generative art/index.html",
+    "href": "posts/generative art/index.html",
+    "title": "Generative art",
+    "section": "",
+    "text": "Generative Art is a process of algorithmically generating new ideas, forms, shapes, colors or patterns. First, you create rules that provide boundaries for the creation process. Then a computer follows those rules to produce new works on your behalf.\n\n\n\nSprawl, by Mark J. Stock. This generative artwork begins as a set of rules and a world (the initial condition). Sometimes it takes millions of iterations for a pattern to emerge, depending on the complexity of the algorithm and its conditions.\n\n\nIn his piece Sprawl above, Stock created a chaotic branching structure growing on a regular array of blocks. His dark growth is simulated using a surface-growth algorithm.\n\"The primary design element is from an algorithm called off-lattice diffusion-limited aggregation (DLA),\" Stock explains. \"Particles are seeded at specific locations and random walk until they strike any part of the existing structure, then they stick there. The whole thing is then radiosity rendered.\""
+  },
+  {
+    "objectID": "posts/Colors/index.html",
+    "href": "posts/Colors/index.html",
+    "title": "Season Colors",
+    "section": "",
+    "text": "Winter colors\n\n\nThis is a generated image with winter colors."
   }
 ]

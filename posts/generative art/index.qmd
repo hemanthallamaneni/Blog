@@ -1,0 +1,14 @@
+---
+title: "Generative art"
+author: "Hemanth Allamaneni"
+date: "2023-09-12"
+categories: [analysis, art]
+---
+
+Generative Art is a process of algorithmically generating new ideas, forms, shapes, colors or patterns. First, you create rules that provide boundaries for the creation process. Then a computer follows those rules to produce new works on your behalf.
+
+![Sprawl, by Mark J. Stock. This generative artwork begins as a set of rules and a world (the initial condition). Sometimes it takes millions of iterations for a pattern to emerge, depending on the complexity of the algorithm and its conditions.](https://images.squarespace-cdn.com/content/v1/5c77350965a707ed1710a1bc/1588698303774-0O4IBACSMA5J5ZB00ZOC/Sprawl+Generative+Art+by+Mark+J.+Stock.jpeg?format=1500w){fig-alt="Sprawl by Mark J. Stock" fig-align="center"}
+
+In his piece *Sprawl* above, Stock created a chaotic branching structure growing on a regular array of blocks. His dark growth is simulated using a surface-growth algorithm.
+
+\"The primary design element is from an algorithm called off-lattice diffusion-limited aggregation (DLA),\" Stock explains. \"Particles are seeded at specific locations and random walk until they strike any part of the existing structure, then they stick there. The whole thing is then radiosity rendered.\"

@@ -2,8 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/posts/Anscombe examples/index.html",
+      "/posts/Colors/index.html",
+      "/posts/generative art/index.html"
     ]
   }
 ]

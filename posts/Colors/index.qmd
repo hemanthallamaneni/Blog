@@ -1,0 +1,13 @@
+---
+title: "Season Colors"
+author: "Hemanth Allamaneni"
+date: "2023-09-12"
+categories: [art, code]
+---
+
+```{}
+```
+
+![Winter colors](winter.png){fig-alt="This is a generated image with winter colors."}
+
+This is a generated image with winter colors.

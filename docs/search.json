@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Posts",
     "section": "",
-    "text": "Ansocombe examples\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nSeason Colors\n\n\n\n\n\n\n\nart\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nGenerative art\n\n\n\n\n\n\n\nanalysis\n\n\nart\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\nNo matching items"
+    "text": "Ansocombe examples\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nGenerative art\n\n\n\n\n\n\n\nanalysis\n\n\nart\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nSeason Colors\n\n\n\n\n\n\n\nart\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\n  \n\n\n\n\nGenerative art\n\n\n\n\n\n\n\nanalysis\n\n\nart\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nHemanth Allamaneni\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -47,5 +47,12 @@
     "title": "Season Colors",
     "section": "",
     "text": "Winter colors\n\n\nThis is a generated image with winter colors."
+  },
+  {
+    "objectID": "posts/Cognition_fields/index.html",
+    "href": "posts/Cognition_fields/index.html",
+    "title": "Generative art",
+    "section": "",
+    "text": "Fields of cognitive science\n\n\nThis image is often used to describe the ever growing domain of cognitive science, however due to a variety of reasons, it is my belief that this is an inadequately defined representation of the field.\nIt is also further inaccurate in the representation insofar as certain fields are more closely related than others and this visual representation does not take these weights into consideration either.\nFurther as an issue, the image does not represent a far enough branched out structure that would involve the sub domains and related fields such that the viewer may get a more comprehensive understanding of how the fields are correlated and what skills might be required to implement a solution or project in the domain.\nThe lay person may feel like they are obtaining a lot of information from this graphic but rather, they would be lacking key insights that would actually solidify the information that they are viewing. Although one could argue that the key purpose of the graphic is simply a simple visual introduction into the concept of what the domain of cognitive science holistically means as a whole, rather than specific parts of it, it is my opinion that the designer would have been better served using another differentiator such as color and an indication of what level of expertise the viewer must have reached before attempting to comprehend the subject matter at the color coded level."
   }
 ]

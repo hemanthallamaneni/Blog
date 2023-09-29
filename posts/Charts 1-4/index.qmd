@@ -31,17 +31,7 @@ ggplot(data, aes(ymin = 0)) +
   theme(legend.position = "none")
 ```
 
-**Chart 2**
-
-```{r}
-install.packages('ggplot2')
-library('ggplot2')
-install.packages('GGally')
-library(GGally)
-
-#ggpairs(mtcars)
-ggpairs(mtcars,columns = 1:4,aes(cyl = cyl, alpha = 0.5))
-
+```{}
 ```
 
 **Chart 3**

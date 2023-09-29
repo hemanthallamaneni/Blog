@@ -33,29 +33,24 @@ ggplot(data, aes(ymin = 0)) +
 
 **Chart 2**
 ```{r}
-{# Load necessary libraries}
 library(ggplot2)
 library(patchwork)
 
-# Sample data for the table
 data <- data.frame(
   Category = c("A", "B", "C", "D"),
   Value = c(10, 15, 8, 20)
 )
-# Create a ggplot bar chart
+
 bar_chart <- ggplot(data, aes(x = Category, y = Value)) +
   geom_bar(stat = "identity") +
   labs(title = "Bar Chart")
 
-# Create a ggplot scatter plot
 scatter_plot <- ggplot(data, aes(x = Category, y = Value)) +
   geom_point() +
   labs(title = "Scatter Plot")
 
-# Combine the ggplot charts into a single patchwork plot
 charts_combined <- bar_chart + scatter_plot + plot_layout(ncol = 2)
 
-# Display only the combined charts without the table
 print(charts_combined)
 ```
 

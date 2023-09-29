@@ -1,0 +1,37 @@
+---
+title: "Ggplot charts"
+author: "Hemanth Allamaneni"
+date: "2023-09-29"
+categories: [code, graphs]
+---
+
+**Chart 1**
+
+```{# Load ggplot2}
+library(ggplot2)
+
+# Make data
+data <- data.frame(
+  group = c("A ", "B ", "C ", "D "),
+  value = c(50, 50, 56, 50),
+  number_of_obs = c(150, 250, 300, 275)
+)
+
+# Calculate the future positions on the x-axis of each bar (left border, central position, right border)
+data$right <- cumsum(data$number_of_obs) + 30 * (0:(nrow(data) - 1))
+data$left <- data$right - data$number_of_obs
+
+# Plot
+ggplot(data, aes(ymin = 0)) +
+  geom_rect(aes(xmin = left, xmax = right, ymax = value, colour = group, fill = group)) +
+  xlab("Observations") +
+  ylab("Value") +
+  theme_minimal() +  # Use the default ggplot2 theme
+  theme(legend.position = "none")
+```
+
+**Chart 2**
+
+```{r}
+
+```

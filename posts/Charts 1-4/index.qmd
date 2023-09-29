@@ -7,7 +7,8 @@ categories: [code, graphs]
 
 **Chart 1**
 
-```{# Load ggplot2}
+```{r}
+# Load ggplot2
 library(ggplot2)
 
 # Make data
@@ -33,5 +34,78 @@ ggplot(data, aes(ymin = 0)) +
 **Chart 2**
 
 ```{r}
+install.packages('ggplot2')
+library('ggplot2')
+install.packages('GGally')
+library(GGally)
 
+#ggpairs(mtcars)
+ggpairs(mtcars,columns = 1:4,aes(cyl = cyl, alpha = 0.5))
+
+```
+
+**Chart 3**
+
+```{r}
+# Load the ggplot2 and gridExtra libraries
+library(ggplot2)
+library(gridExtra)
+
+# Create a sample dataset
+data <- data.frame(
+  Category = c("Category A", "Category B", "Category C", "Category D", "Category E", "Category F"),
+  Value1 = c(30, 50, 20, 40, 60, 25),
+  Value2 = c(40, 60, 30, 50, 70, 35)
+)
+
+# Create the first vertical bar chart (Value1)
+plot1 <- ggplot(data, aes(x = Category, y = Value1, fill = Category)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = rainbow(nrow(data))) +
+  labs(title = "Vertical Bar Chart 1",
+       x = NULL,
+       y = "Value 1") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  coord_flip()
+
+# Create the second vertical bar chart (Value2)
+plot2 <- ggplot(data, aes(x = Category, y = Value2, fill = Category)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = rainbow(nrow(data))) +
+  labs(title = "Vertical Bar Chart 2",
+       x = NULL,
+       y = "Value 2") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  coord_flip()
+
+# Arrange the two plots side by side
+grid.arrange(plot1, plot2, ncol = 2)
+```
+
+**Chart 4**
+
+```{r}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Create a sample dataset
+data <- data.frame(
+  Category = c("Category A", "Category B", "Category C"),
+  Value1 = c(30, 50, 20),
+  Value2 = c(40, 60, 30)
+)
+
+# Reshape the data to long format for overlapping columns
+library(tidyr)
+data_long <- pivot_longer(data, cols = starts_with("Value"), names_to = "Variable", values_to = "Value")
+
+# Create the column chart with slightly overlapping columns
+ggplot(data_long, aes(x = Category, y = Value, fill = Variable)) +
+  geom_col(position = position_dodge(width = 0.7)) +  # Adjust the width for overlapping
+  labs(title = "Overlapping Column Chart",
+       x = "Category",
+       y = "Value") +
+  theme_minimal()
 ```

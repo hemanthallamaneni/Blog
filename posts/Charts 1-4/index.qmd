@@ -4,7 +4,7 @@ author: "Hemanth Allamaneni, Jaleon Braxton, Shivani Chowdary, Meghana Koduru"
 date: "2023-10-11"
 categories: [Research, Presentation]
 ---
-https://docs.google.com/presentation/d/1IAvkdRwN-n9UXDurRPfFHMEh_GCuBwINcRKR1TpFe_s/edit#slide=id.g28a37c41a45_0_3
+<iframe src="https://docs.google.com/presentation/d/1IAvkdRwN-n9UXDurRPfFHMEh_GCuBwINcRKR1TpFe_s/edit#slide=id.g28a37c41a45_0_3" width="100%" height="100%"></iframe>
 
 
 

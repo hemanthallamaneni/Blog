@@ -1,172 +1,52 @@
 ---
-title: "Assignment 5"
+title: "Assignment 6"
 author: "Hemanth Allamaneni"
-date: "2023-10-8"
+date: "2023-10-14"
 categories: [code, graphs]
 ---
 
-### Histogram
+![Shiny app demo](/posts/Assignment6/image.png)
 
-```{r}
-# Generate a random dataset
-set.seed(123)
-data <- rnorm(1000)
+**Objective:** The goal of the Shiny app is to perform sentiment analysis on user-entered text using a custom AFINN dataset. It provides interactive visualizations, specifically bar and pie charts, to represent the sentiment scores and distribution of the entered text.
 
-# Create a histogram
-hist(data, col = "skyblue", main = "Histogram Example", xlab = "Values", ylab = "Frequency")
-```
+**Components:**
 
-### Bar charts, vertical and horizontal
+1.  **Dashboard Layout:**
 
-```{r}
-# Generate a sample dataset
-categories <- c("Category A", "Category B", "Category C", "Category D")
-values <- c(25, 40, 30, 20)
+    -   The dashboard consists of a header with the title "Sentiment Analysis App."
 
-# Create a vertical bar chart
-barplot(values, names.arg = categories, col = "skyblue", main = "Vertical Bar Chart", xlab = "Categories", ylab = "Values")
+    -   The sidebar menu includes a "Charts" option.
 
-# Create a horizontal bar chart
-barplot(values, names.arg = categories, col = "lightcoral", horiz = TRUE, main = "Horizontal Bar Chart", xlab = "Values", ylab = "Categories")
-```
+2.  **Charts Tab:**
 
-### Pie Chart
+    -   The "Charts" tab includes the following components:
 
-```{r}
-# Generate a sample dataset
-categories <- c("Category A", "Category B", "Category C", "Category D")
-values <- c(25, 40, 30, 20)
+        -   A header "Sentiment Analysis Charts."
 
-# Create a pie chart
-pie(values, labels = categories, col = rainbow(length(categories)), main = "Pie Chart")
-```
+        -   A text input field labeled "Enter Text" for users to input the text they want to analyze.
 
-### Box plot
+        -   A bar chart displaying the sentiment score based on the AFINN data. The chart title is "Sentiment Score Bar Chart," and the y-axis is labeled "Sentiment Score."
 
-```{r}
-# Generate a sample dataset (replace this with your own data)
-set.seed(123)
-data <- list(group1 = rnorm(100, mean = 0, sd = 1),
-             group2 = rnorm(100, mean = 2, sd = 1),
-             group3 = rnorm(100, mean = 1, sd = 1))
+        -   A pie chart illustrating the sentiment distribution of the entered text. The chart title is "Sentiment Score Pie Chart."
 
-# Create a boxplot
-boxplot(data, col = c("skyblue", "lightcoral", "lightgreen"), main = "Boxplot Example", xlab = "Groups", ylab = "Values")
-```
+**Functionality:**
 
-### Scatter plot
+-   Users can input text in the provided text input field.
 
-```{r}
-# Generate a sample dataset (replace this with your own data)
-set.seed(123)
-x <- rnorm(100)
-y <- 2*x + rnorm(100)
+-   The app calculates the sentiment score based on the AFINN data for the entered text.
 
-# Create a scatterplot
-plot(x, y, col = "darkorange", main = "Scatterplot Example", xlab = "X-axis", ylab = "Y-axis")
+-   The sentiment score is visually represented in both a bar chart and a pie chart.
 
-```
+-   The bar chart shows the overall sentiment score, and the pie chart depicts the distribution of positive and negative sentiments.
 
-## GGPlot Charts
+**Usage:**
 
-### Histogram
+-   Users can enter any text in the input field to see the corresponding sentiment analysis charts.
 
-```{r}
-# Load the ggplot2 package
-library(ggplot2)
+-   The charts dynamically update based on the entered text, providing an interactive and real-time sentiment analysis experience.
 
-# Generate a random dataset (replace this with your own data)
-set.seed(123)
-data <- rnorm(1000)
+**Note:**
 
-# Create a histogram using ggplot2
-ggplot(data.frame(x = data), aes(x)) +
-  geom_histogram(fill = "skyblue", color = "black", bins = 30) +
-  ggtitle("Histogram Example") +
-  xlab("Values") +
-  ylab("Frequency")
-```
+-   The app utilizes the AFINN data, which is a pre-defined list of words with associated sentiment scores.
 
-### Bar chart
-
-### Vertical
-
-```{r}
-# Generate a sample dataset (replace this with your own data)
-categories <- c("Category A", "Category B", "Category C", "Category D")
-values <- c(25, 40, 30, 20)
-data <- data.frame(categories, values)
-
-# Create a vertical bar chart using ggplot2
-ggplot(data, aes(x = categories, y = values, fill = categories)) +
-  geom_bar(stat = "identity", color = "black") +
-  ggtitle("Vertical Bar Chart") +
-  xlab("Categories") +
-  ylab("Values")
-```
-
-### Horizontal
-
-```{r}
-# Create a horizontal bar chart using ggplot2
-ggplot(data, aes(x = categories, y = values, fill = categories)) +
-  geom_col() +
-  ggtitle("Horizontal Bar Chart") +
-  xlab("Categories") +
-  ylab("Values") +
-  coord_flip()  # Flipping coordinates for a horizontal chart
-```
-
-### Pie Chart
-
-```{r}
-# Create a pie chart using ggplot2
-ggplot(data, aes(x = "", y = values, fill = categories)) +
-  geom_bar(stat = "identity", width = 1, color = "white") +
-  ggtitle("Pie Chart") +
-  coord_polar("y")
-```
-
-### Box plot
-
-```{r}
-# Generate a sample dataset (replace this with your own data)
-set.seed(123)
-data <- data.frame(
-  group = rep(c("Group 1", "Group 2", "Group 3"), each = 100),
-  values = c(rnorm(100, mean = 0, sd = 1), rnorm(100, mean = 2, sd = 1), rnorm(100, mean = 1, sd = 1))
-)
-
-# Create a boxplot using ggplot2
-ggplot(data, aes(x = group, y = values, fill = group)) +
-  geom_boxplot() +
-  ggtitle("Boxplot Example") +
-  xlab("Groups") +
-  ylab("Values")
-```
-
-### Scatter plot
-
-```{r}
-# Generate a sample dataset (replace this with your own data)
-set.seed(123)
-data <- data.frame(
-  x = rnorm(100),
-  y = 2 * rnorm(100) + rnorm(100)
-)
-
-# Create a scatterplot using ggplot2
-ggplot(data, aes(x = x, y = y)) +
-  geom_point(color = "darkorange") +
-  ggtitle("Scatterplot Example") +
-  xlab("X-axis") +
-  ylab("Y-axis")
-```
-
-# File Format differences:
-
-### The choice of file format for exporting graphics depends on the specific needs of the end user. PDF is ideal for high-quality printing and documents with multiple pages.
-
-### While JPG is suitable for web graphics and photographs with millions of colors. SVG, as a scalable vector format, is optimal for web graphics and interactive charts. TIFF, known for loss less compression, is preferred in professional printing and high-quality images, whereas BMP, a simple uncompressed format, is commonly used for basic graphics in Windows applications. PNG, with loss less compression and support for transparency, is well-suited for web graphics and images requiring sharp edges. 
-
-### Each format has its unique advantages, catering to different use cases and preferences. 
+-   The code assumes the existence of an AFINN data file named "afinn_data.csv."

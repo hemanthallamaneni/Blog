@@ -1,0 +1,12 @@
+name: TestShinyApp
+title: TestShinyApp
+username: hemanthallamaneni1
+account: hemanthallamaneni1
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10753994
+bundleId: 8025936
+url: https://hemanthallamaneni1.shinyapps.io/TestShinyApp/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

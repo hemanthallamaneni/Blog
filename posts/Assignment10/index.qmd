@@ -1,0 +1,157 @@
+---
+title: "Assignment 10"
+author: "Hemanth Allamaneni"
+date: "2023-11-16"
+categories: [code, geolocation, census]
+---
+
+```{r}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+```
+
+### Leaflet for Geo-Location
+
+The R script utilizes the **`leaflet`** package to generate an interactive map showcasing my current location. The script employs latitude and longitude coordinates to pinpoint these locations on the map.The functionality includes the addition of default OpenStreetMap tiles, markers at specified geographical coordinates, and interactive pop-up labels for each location. Additionally, a scale control is incorporated for enhanced map navigation. The script offers flexibility for customization, making it an ideal starting point for users aiming to create and display personalized leaflet maps on their websites.
+
+### Median age spatial analysis
+
+In this R script, we leverage the **`tidycensus`** and **`ggplot2`** packages to analyze and visualize time series data pertaining to the median age of U.S. states from 2009 to 2019 using Census Bureau's American Community Survey (ACS) data. The script retrieves and processes demographic information for the years 2009 and 2019, focusing specifically on the variable "B01002_001" representing median age. By employing the **`ggplot2`** package, we create a choropleth map that vividly displays the median age for each state in the specified years. The color intensity on the map represents the median age, allowing for easy visual comparison and trend observation across the two years. This analysis provides valuable insights into the temporal evolution of the median age distribution at the state level, offering a compelling visualization of demographic changes over the decade.
+
+```{r}
+# Install and load the required packages
+install.packages(c("tidycensus", "tigris", "ggplot2", "censusapi"))
+library(tidycensus)
+library(tigris)
+library(ggplot2)
+library(censusapi)
+
+# Set your Census API key
+# census_api_key("0619fde53378e1a58ac22a188b6b12c64c2943cd", install = TRUE)
+
+# Load ACS variables
+acs19 <- tidycensus::load_variables(2019, "acs5", cache = TRUE)
+acs19_Profile <- tidycensus::load_variables(2019, "acs5/profile", cache = TRUE)
+
+# Get median age data for 2019
+us_median_age19 <- get_acs(
+  geography = "state",
+  variables = "B01002_001",
+  year = 2009,
+  survey = "acs1",
+  geometry = TRUE,
+  resolution = "20m"
+) %>%
+  shift_geometry()
+
+# Plot the map with Arial font
+ggplot(data = us_median_age19, aes(fill = estimate)) + 
+  geom_sf(col = "white") +
+  theme_bw() +
+  scale_fill_distiller(
+    palette = "PuBuGn",
+    direction = 1
+  ) + 
+  labs(
+    title = "Median Age by State, 2009",
+    caption = "Data source: 2009 1-year ACS, US Census Bureau",
+    fill = ""
+  ) +
+  theme(
+    legend.position = c(0.08, 0.6),
+    legend.direction = "vertical"
+  )
+```
+
+```{r}
+# Install and load the required packages
+install.packages(c("tidycensus", "tigris", "ggplot2", "censusapi"))
+library(tidycensus)
+library(tigris)
+library(ggplot2)
+library(censusapi)
+
+# Set your Census API key
+# census_api_key("0619fde53378e1a58ac22a188b6b12c64c2943cd", install = TRUE)
+
+# Load ACS variables
+acs19 <- tidycensus::load_variables(2019, "acs5", cache = TRUE)
+acs19_Profile <- tidycensus::load_variables(2019, "acs5/profile", cache = TRUE)
+
+# Get median age data for 2019
+us_median_age19 <- get_acs(
+  geography = "state",
+  variables = "B01002_001",
+  year = 2019,
+  survey = "acs1",
+  geometry = TRUE,
+  resolution = "20m"
+) %>%
+  shift_geometry()
+
+# Plot the map with Arial font
+ggplot(data = us_median_age19, aes(fill = estimate)) + 
+  geom_sf(col = "white") +
+  theme_bw() +
+  scale_fill_distiller(
+    palette = "PuBuGn",
+    direction = 1
+  ) + 
+  labs(
+    title = "Median Age by State, 2019",
+    caption = "Data source: 2019 1-year ACS, US Census Bureau",
+    fill = ""
+  ) +
+  theme(
+    legend.position = c(0.08, 0.6),
+    legend.direction = "vertical"
+  )
+```
+
+### Income analysis across 5 years for texas
+
+The provided R script utilizes Census data retrieved through the American Community Survey (ACS) API to analyze and visualize income information for Texas in the year 2009. The primary variables of interest are contained in the "B19013_001" category, representing median household income. The script first fetches tract-level income data for the entire state of Texas and generates a basic plot of the estimated incomes across different tracts. Subsequently, it employs the **`tmap`** package to create a thematic map for Dallas County, Texas, displaying the spatial distribution of median household incomes at the tract level in 2009. The **`mapview`** package is then utilized to provide an interactive map view of the income data for Dallas County, offering a dynamic exploration of the geographic patterns of income distribution within the specified region. This analysis contributes valuable insights into the economic landscape of Texas in 2009, focusing on median household income disparities at both state and county levels.
+
+```{r}
+# Install and load the required packages
+install.packages(c("tidyverse", "ggmap", "mapproj", "tidycensus", "tigris", "tmap", "mapview"))
+lapply(c("tidyverse", "ggmap", "mapproj", "tidycensus", "tigris", "tmap", "mapview"), require, character.only = TRUE)
+
+library(tidycensus)
+options(tigris_use_cache = TRUE)
+
+# Collect Census data for Texas income in 2009
+tx_income <- get_acs(
+  geography = "tract", 
+  variables = "B19013_001",
+  state = "TX", 
+  year = 2009,
+  geometry = TRUE
+)
+
+# Plot the income data
+plot(tx_income["estimate"])
+
+# Load the tmap package
+library(tmap)
+tmap_mode("view")
+
+# Collect Dallas County income data for 2009
+dallas_income <- get_acs(
+  geography = "tract",
+  variables = "B19013_001",
+  year = 2009,
+  state = "TX",
+  county = "Dallas",
+  geometry = TRUE
+)
+
+# Create a thematic map using tmap
+tm_shape(dallas_income) + 
+  tm_fill(col = "estimate", palette = "YlOrRd", alpha = 0.5)
+
+# Load the mapview package
+library(mapview)
+
+# Display the map using mapview
+mapView(dallas_income, zcol = "estimate")
+```

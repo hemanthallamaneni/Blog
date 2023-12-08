@@ -13,6 +13,37 @@ options(repos = c(CRAN = "https://cloud.r-project.org"))
 
 The R script utilizes the **`leaflet`** package to generate an interactive map showcasing my current location. The script employs latitude and longitude coordinates to pinpoint these locations on the map.The functionality includes the addition of default OpenStreetMap tiles, markers at specified geographical coordinates, and interactive pop-up labels for each location. Additionally, a scale control is incorporated for enhanced map navigation. The script offers flexibility for customization, making it an ideal starting point for users aiming to create and display personalized leaflet maps on their websites.
 
+```{r}
+# Install and load the required packages
+install.packages(c("leaflet", "htmltools"))
+library(leaflet)
+library(htmltools)
+
+# Create sample data
+locations <- data.frame(
+  lat = c(32.9959882),  # Sample latitude values
+  lon = c(-96.7469977),  # Sample longitude values
+  name = c("Hemanth's Location")  # Location names
+)
+
+# Create a leaflet map
+my_map <- leaflet(locations) %>%
+  addTiles()  # Use the default OpenStreetMap tiles
+
+# Add markers to the map
+my_map <- my_map %>%
+  addMarkers(
+    lng = ~lon,
+    lat = ~lat,
+    popup = ~name
+  )
+
+# Display the map in the RStudio Viewer pane
+browsable(
+  htmlwidgets::onRender(my_map, "function(el, x) { L.control.scale().addTo(this); }")
+)
+```
+
 ### Median age spatial analysis
 
 In this R script, we leverage the **`tidycensus`** and **`ggplot2`** packages to analyze and visualize time series data pertaining to the median age of U.S. states from 2009 to 2019 using Census Bureau's American Community Survey (ACS) data. The script retrieves and processes demographic information for the years 2009 and 2019, focusing specifically on the variable "B01002_001" representing median age. By employing the **`ggplot2`** package, we create a choropleth map that vividly displays the median age for each state in the specified years. The color intensity on the map represents the median age, allowing for easy visual comparison and trend observation across the two years. This analysis provides valuable insights into the temporal evolution of the median age distribution at the state level, offering a compelling visualization of demographic changes over the decade.

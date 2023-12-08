@@ -32,6 +32,7 @@ ggplot(data, aes(ymin = 0)) +
 ```
 
 **Chart 2**
+
 ```{r}
 library(ggplot2)
 library(patchwork)

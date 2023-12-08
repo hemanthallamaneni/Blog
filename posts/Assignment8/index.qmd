@@ -1,0 +1,30 @@
+---
+title: "Assignment 8"
+author: "Hemanth Allamaneni"
+date: "2023-11-08"
+categories: [analysis]
+---
+
+## Plan for quarto dashboard for project
+
+Creating a Shiny dashboard using YouTube API data and hosting it on Quatro has been an intriguing yet challenging endeavor. Let me share a detailed account of the difficulties I encountered throughout this process:
+
+###  **API Quotas and Limits:**
+
+Managing the quotas and limits imposed by the YouTube API was a critical aspect. Exceeding these limitations could result in temporary restrictions or additional costs. Staying mindful of these constraints, especially when dealing with a substantial amount of data, was not feasible.
+
+### **Authentication and Authorization:**
+
+Setting up proper authentication and authorization was complex. I had to deal with OAuth 2.0, API keys, and OAuth tokens, which I could not resolve as per the dashboard creation process.
+
+###  **Data Retrieval and Parsing:**
+
+Retrieving and parsing the extensive JSON responses from the YouTube API demanded a solid understanding of the API's structure. Effectively extracting relevant information for my Shiny dashboard required advanced data manipulation techniques, which did not prove possible finally.
+
+### **Debugging and Troubleshooting:**
+
+As with any integration of external APIs, debugging issues and handling errors gracefully were constant challenges. Diagnosing problems related to data retrieval, authentication, or other API-related issues required a systematic approach, which could be inspected in greater depth with more time.
+
+### Conclusion
+
+Due to these challenges, creation of an insightful Shiny dashboard did not prove feasible. Leveraging YouTube API data provided a valuable user experience, and the development process taught me to approach challenges methodically, stay informed about changes, and seek community support when needed and we can possibly hope to resolve these as a future extension to this project.
